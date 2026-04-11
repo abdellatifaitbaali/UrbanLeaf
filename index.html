@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UrbanLeaf AI — Smart Urban Gardening App by NEXO Dev</title>
+  <meta name="description" content="UrbanLeaf AI is your smart urban gardening companion. Identify plants, detect pests with AI, get weather-aware watering reminders, and keep a photo journal of your garden." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --forest-green:       #2D5A27;
+      --forest-green-light: #4A7C43;
+      --forest-green-dark:  #1B3A18;
+      --terracotta:         #E2725B;
+      --terracotta-light:   #EA9A89;
+      --cream:              #F5F5DC;
+      --cream-light:        #FAFAF0;
+      --bg:                 #F8F9F4;
+      --card-white:         #FFFFFF;
+      --dark-text:          #1A1A2E;
+      --subtle:             #8E8E93;
+      --success:            #34C759;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--dark-text);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(45,90,39,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 40px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--forest-green);
+    }
+    .nav-logo span { font-weight: 400; color: var(--subtle); font-size: 0.9rem; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--dark-text); font-weight: 500; font-size: 0.95rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--forest-green); }
+    .nav-cta {
+      background: var(--forest-green);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .nav-cta:hover { background: var(--forest-green-dark); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      background: linear-gradient(160deg, var(--cream-light) 0%, var(--bg) 60%, #e6f0e3 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 30%, rgba(74,124,67,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(226,114,91,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(45,90,39,0.1);
+      color: var(--forest-green);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      border: 1px solid rgba(45,90,39,0.2);
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--forest-green), var(--forest-green-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--subtle);
+      max-width: 580px;
+      margin: 0 auto 40px;
+      font-weight: 400;
+    }
+    .hero-cta-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--forest-green), var(--forest-green-light));
+      color: #fff;
+      padding: 16px 32px;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(45,90,39,0.3);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(45,90,39,0.4); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card-white);
+      color: var(--forest-green);
+      padding: 16px 32px;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid var(--forest-green);
+      transition: background .2s, transform .2s;
+    }
+    .btn-secondary:hover { background: rgba(45,90,39,0.05); transform: translateY(-2px); }
+
+    /* ── FEATURES ── */
+    section { padding: 80px 24px; }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--forest-green);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+    .section-header h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; margin-bottom: 12px; }
+    .section-header p { color: var(--subtle); font-size: 1.05rem; max-width: 540px; margin: 0 auto; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .feature-card {
+      background: var(--card-white);
+      border-radius: 20px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.04);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.1); }
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(45,90,39,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 18px;
+    }
+    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { color: var(--subtle); font-size: 0.92rem; line-height: 1.6; }
+
+    /* ── STATS ── */
+    .stats-section {
+      background: linear-gradient(135deg, var(--forest-green-dark), var(--forest-green));
+      padding: 70px 24px;
+      text-align: center;
+    }
+    .stats-grid { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+    .stat-item { color: #fff; }
+    .stat-number { font-size: 2.8rem; font-weight: 800; display: block; }
+    .stat-label { font-size: 0.95rem; opacity: 0.75; margin-top: 4px; }
+
+    /* ── HOW IT WORKS ── */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .step-card { text-align: center; }
+    .step-number {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--forest-green), var(--forest-green-light));
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      box-shadow: 0 6px 20px rgba(45,90,39,0.3);
+    }
+    .step-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+    .step-card p { color: var(--subtle); font-size: 0.9rem; }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: linear-gradient(135deg, #e6f0e3 0%, var(--cream-light) 100%);
+      padding: 80px 24px;
+      text-align: center;
+      border-radius: 32px;
+      margin: 0 24px 60px;
+      border: 1px solid rgba(45,90,39,0.1);
+    }
+    .cta-band h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 14px; }
+    .cta-band p { color: var(--subtle); font-size: 1.05rem; margin-bottom: 36px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--forest-green-dark);
+      color: #fff;
+      padding: 56px 40px 32px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+    .footer-brand p { font-size: 0.88rem; opacity: 0.65; line-height: 1.7; }
+    .footer-col h4 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; opacity: 0.7; }
+    .footer-col a { display: block; color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; margin-bottom: 8px; transition: color .2s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.85rem;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      🌿 UrbanLeaf AI <span>by NEXO Dev</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="privacy-policy.html">Privacy</a></li>
+      <li><a href="terms-of-use.html">Terms</a></li>
+    </ul>
+    <a href="#download" class="nav-cta">Get the App</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-badge">🌱 AI-Powered Urban Gardening</div>
+      <h1><span class="highlight">Grow Smarter.</span><br>Garden with AI.</h1>
+      <p>Identify plants, detect pests before they spread, get weather-aware watering reminders, and keep a stunning photo journal — all in one app.</p>
+      <div class="hero-cta-group">
+        <a href="#download" class="btn-primary" id="hero-playstore-btn">
+          ▶ Get on Play Store
+        </a>
+        <a href="#features" class="btn-secondary">Explore Features</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="section-header">
+      <span class="section-label">What's Inside</span>
+      <h2>Everything your garden needs</h2>
+      <p>Combining AI intelligence with beautiful design for the modern urban gardener.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>AI Plant Identification</h3>
+        <p>Instantly identify any plant using Google Gemini AI — just snap a photo and get detailed care instructions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🐛</div>
+        <h3>Pest Detection</h3>
+        <p>Early pest and disease detection powered by machine learning, so you can act before damage spreads.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💧</div>
+        <h3>Smart Watering Reminders</h3>
+        <p>Weather-aware daily reminders tell you exactly when to water each plant — no over- or under-watering.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📸</div>
+        <h3>Photo Journal</h3>
+        <p>Track your plants' growth over time with a beautiful, chronological photo journal for every plant.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌤</div>
+        <h3>Live Weather Integration</h3>
+        <p>Real-time local weather data helps UrbanLeaf adapt watering schedules automatically.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">☁️</div>
+        <h3>Cloud Sync</h3>
+        <p>All your plant data syncs seamlessly across devices via Firebase, available online or offline.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works" style="background: var(--card-white);">
+    <div class="section-header">
+      <span class="section-label">Simple</span>
+      <h2>How It Works</h2>
+      <p>Up and running in minutes. No gardening expertise required.</p>
+    </div>
+    <div class="how-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Download & Sign Up</h3>
+        <p>Create a free account in seconds using your email.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Add Your Plants</h3>
+        <p>Use AI to identify a plant or add it manually with a photo.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Set Your Location</h3>
+        <p>Enter your city and UrbanLeaf fetches live weather data.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <h3>Grow & Track</h3>
+        <p>Get daily reminders, scan for pests, and watch your garden thrive.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">10,000+</span>
+        <span class="stat-label">Plants Tracked</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">500+</span>
+        <span class="stat-label">Species Identified</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">98%</span>
+        <span class="stat-label">User Satisfaction</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section id="download">
+    <div class="cta-band">
+      <h2>Ready to grow smarter? 🌿</h2>
+      <p>Join thousands of urban gardeners using AI to nurture healthier plants.</p>
+      <a href="https://play.google.com/store" class="btn-primary" id="cta-playstore-btn">▶ Download Free on Play Store</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>🌿 UrbanLeaf AI</h3>
+        <p>Smart urban gardening powered by AI. Developed by NEXO Dev — Custom Web, Mobile & Game Development.</p>
+        <br/>
+        <p>📍 1209 Mountain Road Pl NE Ste N,<br>Albuquerque, NM 87110-7845, USA</p>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-use.html">Terms of Use</a>
+      </div>
+      <div class="footer-col">
+        <h4>NEXO Dev</h4>
+        <a href="https://nexodev.site/" target="_blank" rel="noopener">nexodev.site</a>
+        <a href="mailto:contact@nexodev.site">contact@nexodev.site</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 NEXO Dev (NexoDev LLC). All rights reserved.</span>
+      <span>UrbanLeaf AI — Plant Care &amp; AI Identifier</span>
+    </div>
+  </footer>
+
+</body>
+</html>

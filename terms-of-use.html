@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Use — UrbanLeaf AI by NEXO Dev</title>
+  <meta name="description" content="UrbanLeaf AI Terms of Use. Read the terms and conditions for using the UrbanLeaf AI app by NEXO Dev." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --forest-green:       #2D5A27;
+      --forest-green-light: #4A7C43;
+      --forest-green-dark:  #1B3A18;
+      --terracotta:         #E2725B;
+      --bg:                 #F8F9F4;
+      --card-white:         #FFFFFF;
+      --dark-text:          #1A1A2E;
+      --subtle:             #8E8E93;
+      --cream-light:        #FAFAF0;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--dark-text); line-height: 1.7; }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.88); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(45,90,39,0.1);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 40px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.2rem; font-weight: 700; color: var(--forest-green); }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--dark-text); font-weight: 500; font-size: 0.9rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--forest-green); }
+    .nav-back { color: var(--forest-green); text-decoration: none; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; }
+
+    .legal-hero {
+      background: linear-gradient(135deg, #3a2418, var(--terracotta));
+      padding: 64px 24px 48px;
+      text-align: center;
+      color: #fff;
+    }
+    .legal-hero .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.9);
+      padding: 5px 14px; border-radius: 50px;
+      font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .legal-hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 10px; }
+    .legal-hero p { font-size: 0.95rem; opacity: 0.7; }
+
+    .legal-body {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+    .toc {
+      background: var(--card-white);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+      border: 1px solid rgba(226,114,91,0.15);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .toc h3 { font-size: 0.9rem; font-weight: 700; color: var(--terracotta); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a { color: var(--terracotta); text-decoration: none; font-size: 0.92rem; transition: opacity .2s; }
+    .toc a:hover { opacity: 0.7; }
+
+    .legal-section { margin-bottom: 44px; scroll-margin-top: 90px; }
+    .legal-section h2 {
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--forest-green);
+      border-left: 4px solid var(--terracotta);
+      padding-left: 14px;
+      margin-bottom: 14px;
+    }
+    .legal-section p { font-size: 0.97rem; color: var(--dark-text); margin-bottom: 12px; }
+    .legal-section ul { padding-left: 20px; margin-bottom: 12px; }
+    .legal-section ul li { margin-bottom: 6px; font-size: 0.95rem; color: var(--dark-text); }
+
+    .warning-box {
+      background: rgba(226,114,91,0.08);
+      border: 1px solid rgba(226,114,91,0.25);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-bottom: 32px;
+      font-size: 0.92rem;
+      color: var(--dark-text);
+    }
+    .warning-box strong { color: var(--terracotta); }
+
+    .contact-card {
+      background: linear-gradient(135deg, rgba(45,90,39,0.06), rgba(74,124,67,0.06));
+      border: 1px solid rgba(45,90,39,0.15);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-top: 48px;
+    }
+    .contact-card h3 { font-weight: 700; margin-bottom: 10px; color: var(--forest-green); }
+    .contact-card p { font-size: 0.92rem; color: var(--dark-text); margin-bottom: 6px; }
+    .contact-card a { color: var(--forest-green); text-decoration: none; font-weight: 600; }
+
+    footer {
+      background: var(--forest-green-dark); color: #fff;
+      padding: 32px 40px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;
+      font-size: 0.85rem;
+    }
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    footer a:hover { color: #fff; }
+    footer .footer-links { display: flex; gap: 20px; }
+    @media (max-width: 600px) { nav { padding: 14px 18px; } .nav-links { display: none; } footer { flex-direction: column; text-align: center; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">🌿 UrbanLeaf AI</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="privacy-policy.html">Privacy Policy</a></li>
+    </ul>
+    <a href="index.html" class="nav-back">← Back to Home</a>
+  </nav>
+
+  <div class="legal-hero">
+    <div class="badge">📋 Legal Document</div>
+    <h1>Terms of Use</h1>
+    <p>Last updated: April 2026</p>
+  </div>
+
+  <div class="legal-body">
+
+    <div class="warning-box">
+      <strong>Please read these Terms carefully.</strong> By downloading, installing, or using UrbanLeaf AI, you agree to be bound by these Terms of Use. If you do not agree, please do not use the App.
+    </div>
+
+    <div class="toc">
+      <h3>Table of Contents</h3>
+      <ol>
+        <li><a href="#t1">Acceptance of Terms</a></li>
+        <li><a href="#t2">License</a></li>
+        <li><a href="#t3">User Accounts</a></li>
+        <li><a href="#t4">User Content</a></li>
+        <li><a href="#t5">Prohibited Uses</a></li>
+        <li><a href="#t6">AI Features Disclaimer</a></li>
+        <li><a href="#t7">Advertising</a></li>
+        <li><a href="#t8">Termination</a></li>
+        <li><a href="#t9">Disclaimer of Warranties</a></li>
+        <li><a href="#t10">Limitation of Liability</a></li>
+        <li><a href="#t11">Governing Law</a></li>
+        <li><a href="#t12">Changes to Terms</a></li>
+        <li><a href="#t13">Contact Us</a></li>
+      </ol>
+    </div>
+
+    <div class="legal-section" id="t1">
+      <h2>1. Acceptance of Terms</h2>
+      <p>By downloading, installing, or using <strong>UrbanLeaf AI</strong> (the "App"), operated by <strong>NEXO Dev</strong> (NexoDev LLC), you agree to be bound by these Terms of Use ("Terms") and our <a href="privacy-policy.html" style="color:var(--forest-green);font-weight:600;">Privacy Policy</a>. If you do not agree to these Terms, please do not use the App.</p>
+    </div>
+
+    <div class="legal-section" id="t2">
+      <h2>2. License</h2>
+      <p>NEXO Dev grants you a limited, non-exclusive, non-transferable, revocable license to use the App for personal, non-commercial purposes, subject to these Terms. All rights not expressly granted are reserved by NEXO Dev.</p>
+    </div>
+
+    <div class="legal-section" id="t3">
+      <h2>3. User Accounts</h2>
+      <p>You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You agree to:</p>
+      <ul>
+        <li>Provide accurate and complete information when creating your account.</li>
+        <li>Notify us immediately of any unauthorized use of your account.</li>
+        <li>Not share your account credentials with any third party.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section" id="t4">
+      <h2>4. User Content</h2>
+      <p>You retain ownership of any content you submit through the App (plant data, journal entries, photos). By submitting content, you grant NEXO Dev a non-exclusive, royalty-free, worldwide license to use, store, and display that content solely for the purpose of providing the App's services to you.</p>
+      <p>You confirm that you have the right to grant this license and that your content does not violate any third-party rights.</p>
+    </div>
+
+    <div class="legal-section" id="t5">
+      <h2>5. Prohibited Uses</h2>
+      <p>You agree not to:</p>
+      <ul>
+        <li>Use the App for any unlawful purpose or in violation of any applicable laws.</li>
+        <li>Attempt to gain unauthorized access to any part of the App or its servers.</li>
+        <li>Reverse-engineer, decompile, or disassemble the App or any of its components.</li>
+        <li>Use the App to transmit any malicious code, viruses, or spam.</li>
+        <li>Scrape, crawl, or data-mine the App's content without our written consent.</li>
+        <li>Impersonate any person or entity or falsely represent your affiliation.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section" id="t6">
+      <h2>6. AI Features Disclaimer</h2>
+      <p>The AI-powered plant identification and pest detection features are provided <strong>for informational purposes only</strong>. While we strive for accuracy, results may not always be correct or complete.</p>
+      <p>Always consult a qualified horticulturist, botanist, or pest control professional for important decisions regarding your plants' health, especially when it comes to using pesticides or treatments.</p>
+    </div>
+
+    <div class="legal-section" id="t7">
+      <h2>7. Advertising</h2>
+      <p>The App is provided free of charge and is supported by advertising through <strong>Google AdMob</strong>. By using the App, you consent to the display of advertisements. We are not responsible for the content of third-party advertisements.</p>
+    </div>
+
+    <div class="legal-section" id="t8">
+      <h2>8. Termination</h2>
+      <p>We reserve the right to terminate or suspend your account at our sole discretion, without prior notice or liability, for conduct that we believe violates these Terms, is harmful to other users, NEXO Dev, or any third party, or for any other reason we deem appropriate.</p>
+      <p>You may terminate your account at any time using the "Delete Account" option in the App settings.</p>
+    </div>
+
+    <div class="legal-section" id="t9">
+      <h2>9. Disclaimer of Warranties</h2>
+      <p>The App is provided on an <strong>"as is"</strong> and <strong>"as available"</strong> basis without warranties of any kind, either express or implied. NEXO Dev does not warrant that:</p>
+      <ul>
+        <li>The App will be uninterrupted, error-free, or completely secure.</li>
+        <li>Any defects will be corrected.</li>
+        <li>The App or its servers are free of viruses or other harmful components.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section" id="t10">
+      <h2>10. Limitation of Liability</h2>
+      <p>To the maximum extent permitted by applicable law, NEXO Dev and its affiliates, directors, employees, and agents shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or goodwill, arising out of or related to your use of or inability to use the App, even if NEXO Dev has been advised of the possibility of such damages.</p>
+    </div>
+
+    <div class="legal-section" id="t11">
+      <h2>11. Governing Law</h2>
+      <p>These Terms shall be governed by and construed in accordance with the laws of the <strong>State of New Mexico, USA</strong>, without regard to its conflict of law provisions. Any disputes shall be subject to the exclusive jurisdiction of the courts located in Albuquerque, New Mexico.</p>
+    </div>
+
+    <div class="legal-section" id="t12">
+      <h2>12. Changes to Terms</h2>
+      <p>We may modify these Terms at any time by posting the revised Terms in the App and on this page, updating the "Last updated" date. Your continued use of the App after any changes constitutes your acceptance of the new Terms.</p>
+    </div>
+
+    <div class="legal-section" id="t13">
+      <h2>13. Contact Us</h2>
+      <p>If you have any questions about these Terms, please contact us:</p>
+    </div>
+
+    <div class="contact-card">
+      <h3>🌿 NEXO Dev (NexoDev LLC)</h3>
+      <p>📍 1209 Mountain Road Pl NE Ste N, Albuquerque, NM 87110-7845, USA</p>
+      <p>📧 <a href="mailto:contact@nexodev.site">contact@nexodev.site</a></p>
+      <p>🌐 <a href="https://nexodev.site/" target="_blank" rel="noopener">nexodev.site</a></p>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>© 2026 NEXO Dev (NexoDev LLC). All rights reserved.</span>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="mailto:contact@nexodev.site">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>
